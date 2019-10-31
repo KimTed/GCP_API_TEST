@@ -1,0 +1,10 @@
+#default ignore
+.vscode
+node_modules
+.DS_Store
+
+#env
+.env
+
+#credential
+
