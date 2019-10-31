@@ -1,7 +1,7 @@
 'use strict';
 // const sharp = require('sharp');
 const vision = require('@google-cloud/vision');
-const client = new vision.ImageAnnotatorClient({projectId: process.env.GCP_PROJECTID, keyFilename: prcess.env.CREDENTIAL_PATH});
+const client = new vision.ImageAnnotatorClient({projectId: process.env.GCP_PROJECTID, keyFilename: process.env.CREDENTIAL_PATH});
 // const request = require('request').defaults({ encoding: null });
 
 const detectImg = async (imgURL, returnObj) => {

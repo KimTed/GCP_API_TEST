@@ -6,7 +6,7 @@ const {Storage} = require('@google-cloud/storage');
 // the client, the client library will look for credentials in the
 // environment.
 async function main() {
-    const storage = new Storage({projectId: process.env.GCP_PROJECTID, keyFilename: prcess.env.CREDENTIAL_PATH});
+    const storage = new Storage({projectId: process.env.GCP_PROJECTID, keyFilename: process.env.CREDENTIAL_PATH});
 
     try {
     // Makes an authenticated API request.
