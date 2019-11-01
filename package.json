@@ -12,6 +12,7 @@
     "@google-cloud/storage": "^4.0.0",
     "@google-cloud/video-intelligence": "^2.5.1",
     "@google-cloud/vision": "^1.5.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "request": "^2.88.0"
   }
 }

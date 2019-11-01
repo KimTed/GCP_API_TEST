@@ -1,9 +1,11 @@
-require('dotenv').config();
 'use strict';
+
+require('dotenv').config();
+const videoIntelligence = require('@google-cloud/video-intelligence');
+const client = new videoIntelligence.VideoIntelligenceServiceClient({projectId: process.env.GCP_PROJECTID, keyFilename: process.env.CREDENTIAL_PATH});
 (async () => {
   
-  const videoIntelligence = require('@google-cloud/video-intelligence');
-  const client = new videoIntelligence.VideoIntelligenceServiceClient({projectId: process.env.GCP_PROJECTID, keyFilename: process.env.CREDENTIAL_PATH});
+  
   const gcsUri = 'gs://comp_storage/Comp_video/main.mp4';
   const request = {
     inputUri: gcsUri,

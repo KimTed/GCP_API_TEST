@@ -1,25 +1,30 @@
-'use strict'
-// Imports the Google Cloud client library.
+'use strict';
+
+require('dotenv').config();
 const {Storage} = require('@google-cloud/storage');
 
-// Instantiates a client. If you don't specify credentials when constructing
-// the client, the client library will look for credentials in the
-// environment.
-async function main() {
+const main = async () => {
     const storage = new Storage({projectId: process.env.GCP_PROJECTID, keyFilename: process.env.CREDENTIAL_PATH});
 
     try {
-    // Makes an authenticated API request.
-    const results = await storage.getBuckets();
+        const [buckets] = await storage.getBuckets();
+        let bucketNm = '';
+        let linkArr = [];
 
-    const [buckets] = results;
-
-    console.log('Buckets:');
-    buckets.forEach(bucket => {
-        console.log(bucket.name);
-    });
+        for (const [idx, bucket] of Array.from(buckets).entries()) {
+            
+            bucketNm = bucket.name;
+            if (bucketNm === 'comp_storage') break;
+        };
+        const [files] = await storage.bucket(bucketNm).getFiles();
+        console.log(files)
+        for (const [idx, file] of Array.from(files).entries()) {
+            console.log(file.name);
+            linkArr.push(file.name);
+        }
+        console.log(linkArr)
     } catch (err) {
-    console.error('ERROR:', err);
+        console.error('ERROR:', err);
     }
 }
 
